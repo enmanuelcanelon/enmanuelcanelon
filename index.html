@@ -1,0 +1,255 @@
+---
+layout: default
+title: "Inicio"
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-emoji">🌱</span>
+    <h1 class="hero-title">Jardín Digital</h1>
+    <p class="hero-subtitle">Un espacio para cultivar y organizar conocimiento en múltiples áreas del saber.</p>
+    <div class="hero-cta">
+      <a href="#colecciones" class="btn btn-primary">Explorar</a>
+      <a href="{{ '/about/' | relative_url }}" class="btn btn-outline">Sobre mí</a>
+    </div>
+  </div>
+</section>
+
+<section class="collections-overview" id="colecciones">
+  <h2 class="section-title">Colecciones</h2>
+  
+  <div class="collections-grid">
+    <!-- Humanidades -->
+    <a href="{{ '/humanidades/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">📚</span>
+      <h3 class="collection-card-title">Humanidades</h3>
+      <p class="collection-card-desc">Filosofía, Historia, Psicología, Política, Arte, Cine y más.</p>
+      <span class="collection-card-count">{{ site.humanidades.size }} notas</span>
+    </a>
+    
+    <!-- Ciencias -->
+    <a href="{{ '/ciencias/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">🔬</span>
+      <h3 class="collection-card-title">Ciencias</h3>
+      <p class="collection-card-desc">Matemáticas, Física, Química, Biología, Astronomía.</p>
+      <span class="collection-card-count">{{ site.ciencias.size }} notas</span>
+    </a>
+    
+    <!-- Tecnología -->
+    <a href="{{ '/tecnologia/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">💻</span>
+      <h3 class="collection-card-title">Tecnología</h3>
+      <p class="collection-card-desc">IA, Programación, Ciberseguridad, DevOps, Data Science.</p>
+      <span class="collection-card-count">{{ site.tecnologia.size }} notas</span>
+    </a>
+    
+    <!-- Negocios -->
+    <a href="{{ '/negocios/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">📈</span>
+      <h3 class="collection-card-title">Negocios</h3>
+      <p class="collection-card-desc">Finanzas, Economía, Marketing, Emprendimiento.</p>
+      <span class="collection-card-count">{{ site.negocios.size }} notas</span>
+    </a>
+    
+    <!-- Salud -->
+    <a href="{{ '/salud/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">🏃</span>
+      <h3 class="collection-card-title">Salud</h3>
+      <p class="collection-card-desc">Nutrición, Fitness, Bienestar mental, Productividad.</p>
+      <span class="collection-card-count">{{ site.salud.size }} notas</span>
+    </a>
+    
+    <!-- Idiomas -->
+    <a href="{{ '/idiomas/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">🌍</span>
+      <h3 class="collection-card-title">Idiomas</h3>
+      <p class="collection-card-desc">Aprendizaje de lenguas, vocabulario, gramática.</p>
+      <span class="collection-card-count">{{ site.idiomas.size }} notas</span>
+    </a>
+    
+    <!-- Hobbies -->
+    <a href="{{ '/hobbies/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">♟️</span>
+      <h3 class="collection-card-title">Hobbies</h3>
+      <p class="collection-card-desc">Ajedrez, Viajes, Cocina, Gaming y pasatiempos.</p>
+      <span class="collection-card-count">{{ site.hobbies.size }} notas</span>
+    </a>
+    
+    <!-- Biblioteca -->
+    <a href="{{ '/biblioteca/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">📖</span>
+      <h3 class="collection-card-title">Biblioteca</h3>
+      <p class="collection-card-desc">Reseñas de libros, películas y música.</p>
+      <span class="collection-card-count">{{ site.biblioteca.size }} reseñas</span>
+    </a>
+    
+    <!-- Proyectos -->
+    <a href="{{ '/proyectos/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">🚀</span>
+      <h3 class="collection-card-title">Proyectos</h3>
+      <p class="collection-card-desc">Side projects, experimentos, tutoriales.</p>
+      <span class="collection-card-count">{{ site.proyectos.size }} proyectos</span>
+    </a>
+    
+    <!-- Bitácora -->
+    <a href="{{ '/bitacora/' | relative_url }}" class="collection-card">
+      <span class="collection-card-icon">📝</span>
+      <h3 class="collection-card-title">Bitácora</h3>
+      <p class="collection-card-desc">Diario personal, reflexiones, metas.</p>
+      <span class="collection-card-count">{{ site.bitacora.size }} entradas</span>
+    </a>
+  </div>
+</section>
+
+<!-- Últimas notas -->
+{% assign all_posts = site.humanidades | concat: site.ciencias | concat: site.tecnologia | concat: site.negocios | concat: site.salud | concat: site.idiomas | concat: site.hobbies | concat: site.biblioteca | concat: site.proyectos | concat: site.bitacora | sort: 'date' | reverse %}
+
+{% if all_posts.size > 0 %}
+<section class="recent-posts">
+  <h2 class="section-title">Últimas notas</h2>
+  
+  <div class="collection-grid">
+    {% for post in all_posts limit: 6 %}
+    <article class="card">
+      <a href="{{ post.url | relative_url }}" class="card-link">
+        <div class="card-content">
+          <span class="card-collection">{{ post.collection_icon }} {{ post.collection_name }}</span>
+          <h3 class="card-title">{{ post.title }}</h3>
+          {% if post.excerpt %}
+          <p class="card-description">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+          {% endif %}
+          <div class="card-meta">
+            {% if post.category %}
+            <span class="card-category">{{ post.category }}</span>
+            {% endif %}
+            {% if post.date %}
+            <time class="card-date">{{ post.date | date: "%d %b %Y" }}</time>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<style>
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-16) var(--space-4);
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+  border-radius: var(--border-radius-xl);
+  margin-bottom: var(--space-12);
+}
+
+.hero-emoji {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.hero-title {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-4);
+  
+  @media (min-width: 768px) {
+    font-size: 3.5rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--space-8);
+}
+
+.hero-cta {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Section */
+.section-title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+/* Collections Grid */
+.collections-overview {
+  margin-bottom: var(--space-16);
+}
+
+.collections-grid {
+  display: grid;
+  gap: var(--space-4);
+  
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+  }
+}
+
+.collection-card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-3);
+}
+
+.collection-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.collection-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  flex: 1;
+  margin-bottom: var(--space-3);
+}
+
+.collection-card-count {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Recent Posts */
+.recent-posts {
+  margin-bottom: var(--space-12);
+}
+
+.card-collection {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+</style>

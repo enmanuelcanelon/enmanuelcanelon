@@ -1,0 +1,93 @@
+---
+layout: default
+---
+
+<section class="collection-page">
+  <header class="collection-header">
+    <h1 class="collection-title">
+      <span class="collection-icon">{{ page.icon }}</span>
+      {{ page.title }}
+    </h1>
+    {% if page.description %}
+    <p class="collection-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+  
+  <!-- Filtros por categoría -->
+  {% assign items = site[page.collection_name] | sort: 'date' | reverse %}
+  {% assign categories = items | map: 'category' | uniq | compact %}
+  
+  {% if categories.size > 0 %}
+  <div class="collection-filters">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    {% for cat in categories %}
+    <button class="filter-btn" data-filter="{{ cat }}">{{ cat | capitalize }}</button>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <!-- Grid de items -->
+  <div class="collection-grid">
+    {% for item in items %}
+    <article class="card" data-category="{{ item.category }}">
+      <a href="{{ item.url | relative_url }}" class="card-link">
+        <div class="card-content">
+          <h2 class="card-title">{{ item.title }}</h2>
+          
+          {% if item.description %}
+          <p class="card-description">{{ item.description | truncate: 120 }}</p>
+          {% elsif item.excerpt %}
+          <p class="card-description">{{ item.excerpt | strip_html | truncate: 120 }}</p>
+          {% endif %}
+          
+          <div class="card-meta">
+            {% if item.category %}
+            <span class="card-category">{{ item.category }}</span>
+            {% endif %}
+            {% if item.date %}
+            <time class="card-date">{{ item.date | date: "%d %b %Y" }}</time>
+            {% endif %}
+          </div>
+          
+          {% if item.tags.size > 0 %}
+          <div class="card-tags">
+            {% for tag in item.tags limit: 3 %}
+            <span class="tag-small">#{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+  
+  {% if items.size == 0 %}
+  <div class="empty-state">
+    <p>Aún no hay contenido en esta colección.</p>
+    <p>¡Pronto habrá nuevas notas!</p>
+  </div>
+  {% endif %}
+</section>
+
+<script>
+// Filtrado por categoría
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    
+    // Actualizar botón activo
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    // Filtrar cards
+    document.querySelectorAll('.card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>

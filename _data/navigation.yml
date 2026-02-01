@@ -1,0 +1,51 @@
+# ============================================================================
+# NAVEGACIÓN - Jardín Digital
+# ============================================================================
+
+main:
+  - title: "Conocimiento"
+    url: "#"
+    icon: "📚"
+    children:
+      - title: "Humanidades"
+        url: "/humanidades/"
+        icon: "📚"
+      - title: "Ciencias"
+        url: "/ciencias/"
+        icon: "🔬"
+      - title: "Tecnología"
+        url: "/tecnologia/"
+        icon: "💻"
+      - title: "Negocios"
+        url: "/negocios/"
+        icon: "📈"
+  
+  - title: "Vida"
+    url: "#"
+    icon: "🌱"
+    children:
+      - title: "Salud"
+        url: "/salud/"
+        icon: "🏃"
+      - title: "Idiomas"
+        url: "/idiomas/"
+        icon: "🌍"
+      - title: "Hobbies"
+        url: "/hobbies/"
+        icon: "♟️"
+  
+  - title: "Biblioteca"
+    url: "/biblioteca/"
+    icon: "📖"
+  
+  - title: "Proyectos"
+    url: "/proyectos/"
+    icon: "🚀"
+  
+  - title: "Bitácora"
+    url: "/bitacora/"
+    icon: "📝"
+  
+  - title: "Sobre mí"
+    url: "/about/"
+    icon: "👤"

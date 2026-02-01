@@ -1,0 +1,113 @@
+---
+layout: default
+---
+
+<article class="media-review" itemscope itemtype="http://schema.org/Review">
+  <header class="media-header">
+    <div class="media-header-content">
+      <!-- Portada -->
+      {% if page.cover %}
+      <div class="media-cover">
+        <img src="{{ page.cover | relative_url }}" alt="Portada de {{ page.title }}" loading="lazy">
+      </div>
+      {% endif %}
+      
+      <!-- Información -->
+      <div class="media-info">
+        <span class="media-type">
+          {% case page.type %}
+            {% when 'libro' %}📖 Libro
+            {% when 'pelicula' %}🎬 Película
+            {% when 'album' %}🎵 Álbum
+            {% else %}📚 Media
+          {% endcase %}
+        </span>
+        
+        <h1 class="media-title" itemprop="itemReviewed">{{ page.title }}</h1>
+        
+        {% if page.author %}
+        <p class="media-author">por <strong>{{ page.author }}</strong></p>
+        {% endif %}
+        
+        {% if page.artist %}
+        <p class="media-artist">por <strong>{{ page.artist }}</strong></p>
+        {% endif %}
+        
+        {% if page.director %}
+        <p class="media-director">Dirigida por <strong>{{ page.director }}</strong></p>
+        {% endif %}
+        
+        <!-- Rating con estrellas -->
+        {% if page.rating %}
+        <div class="media-rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+          <span class="stars">
+            {% for i in (1..5) %}
+              {% if i <= page.rating %}★{% else %}☆{% endif %}
+            {% endfor %}
+          </span>
+          <span class="rating-value" itemprop="ratingValue">{{ page.rating }}/5</span>
+        </div>
+        {% endif %}
+        
+        <!-- Estado -->
+        {% if page.status %}
+        <span class="media-status status-{{ page.status }}">
+          {% case page.status %}
+            {% when 'leido' %}✓ Leído
+            {% when 'leyendo' %}📖 Leyendo
+            {% when 'pendiente' %}📋 Pendiente
+            {% when 'visto' %}✓ Visto
+            {% when 'viendo' %}▶️ Viendo
+            {% when 'escuchado' %}✓ Escuchado
+            {% else %}{{ page.status }}
+          {% endcase %}
+        </span>
+        {% endif %}
+        
+        <!-- Metadatos adicionales -->
+        <div class="media-meta">
+          {% if page.year %}
+          <span class="meta-item">📅 {{ page.year }}</span>
+          {% endif %}
+          {% if page.year_published %}
+          <span class="meta-item">📅 {{ page.year_published }}</span>
+          {% endif %}
+          {% if page.genre %}
+          <span class="meta-item">🏷️ {{ page.genre | join: ', ' }}</span>
+          {% endif %}
+          {% if page.date_finished %}
+          <span class="meta-item">✓ Terminado: {{ page.date_finished | date: "%d %b %Y" }}</span>
+          {% endif %}
+          {% if page.date_watched %}
+          <span class="meta-item">✓ Visto: {{ page.date_watched | date: "%d %b %Y" }}</span>
+          {% endif %}
+        </div>
+        
+        {% if page.tags.size > 0 %}
+        <div class="media-tags">
+          {% for tag in page.tags %}
+          <span class="tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  
+  <!-- Contenido de la reseña -->
+  <div class="media-content" itemprop="reviewBody">
+    {{ content }}
+  </div>
+  
+  <!-- Navegación -->
+  <nav class="post-navigation">
+    <a href="{{ '/biblioteca/' | relative_url }}" class="nav-back">
+      ← Volver a Biblioteca
+    </a>
+  </nav>
+  
+  <!-- Comentarios -->
+  {% if page.comments %}
+  {% include comments.html %}
+  {% endif %}
+</article>

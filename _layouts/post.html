@@ -1,0 +1,84 @@
+---
+layout: default
+---
+
+<article class="post" itemscope itemtype="http://schema.org/Article">
+  <!-- Header del Post -->
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-collection">
+        {{ page.collection_icon }} {{ page.collection_name }}
+      </span>
+      {% if page.category %}
+      <span class="post-category">{{ page.category }}</span>
+      {% endif %}
+      {% if page.date %}
+      <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%d %b %Y" }}
+      </time>
+      {% endif %}
+    </div>
+    
+    <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+    
+    {% if page.description %}
+    <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+    
+    {% if page.tags.size > 0 %}
+    <div class="post-tags">
+      {% for tag in page.tags %}
+      <span class="tag">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Tiempo de lectura estimado -->
+    {% assign words = content | number_of_words %}
+    {% assign minutes = words | divided_by: 200 %}
+    {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+    <span class="reading-time">{{ minutes }} min de lectura</span>
+  </header>
+  
+  <!-- Contenido del Post -->
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+  
+  <!-- Navegación entre posts de la misma colección -->
+  <nav class="post-navigation">
+    {% assign collection = site[page.collection] %}
+    {% assign current_index = nil %}
+    {% for item in collection %}
+      {% if item.url == page.url %}
+        {% assign current_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if current_index %}
+      {% assign prev_index = current_index | minus: 1 %}
+      {% assign next_index = current_index | plus: 1 %}
+      
+      {% if prev_index >= 0 %}
+        {% assign prev_post = collection[prev_index] %}
+        <a href="{{ prev_post.url | relative_url }}" class="nav-prev">
+          <span class="nav-label">← Anterior</span>
+          <span class="nav-title">{{ prev_post.title }}</span>
+        </a>
+      {% endif %}
+      
+      {% if next_index < collection.size %}
+        {% assign next_post = collection[next_index] %}
+        <a href="{{ next_post.url | relative_url }}" class="nav-next">
+          <span class="nav-label">Siguiente →</span>
+          <span class="nav-title">{{ next_post.title }}</span>
+        </a>
+      {% endif %}
+    {% endif %}
+  </nav>
+  
+  <!-- Sistema de Comentarios -->
+  {% if page.comments %}
+  {% include comments.html %}
+  {% endif %}
+</article>

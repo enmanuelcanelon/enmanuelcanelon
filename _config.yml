@@ -1,0 +1,219 @@
+# ============================================================================
+# JARDÍN DIGITAL - ENMANUEL CANELON
+# Configuración principal de Jekyll
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Información del Sitio
+# ----------------------------------------------------------------------------
+title: "Enmanuel Canelon"
+description: "Jardín Digital de Ingeniería - Un espacio para cultivar conocimiento en humanidades, ciencias, tecnología y más."
+author:
+  name: "Enmanuel Canelon"
+  email: ""
+  bio: "Ingeniero cultivando conocimiento."
+
+url: "https://enmanuelcanelon.github.io"
+baseurl: ""
+logo: "/assets/images/logo.png"
+
+# ----------------------------------------------------------------------------
+# Configuración de Build
+# ----------------------------------------------------------------------------
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# ----------------------------------------------------------------------------
+# Colecciones (10 dominios de conocimiento)
+# ----------------------------------------------------------------------------
+collections:
+  humanidades:
+    output: true
+    permalink: /humanidades/:slug/
+  ciencias:
+    output: true
+    permalink: /ciencias/:slug/
+  tecnologia:
+    output: true
+    permalink: /tecnologia/:slug/
+  negocios:
+    output: true
+    permalink: /negocios/:slug/
+  salud:
+    output: true
+    permalink: /salud/:slug/
+  idiomas:
+    output: true
+    permalink: /idiomas/:slug/
+  hobbies:
+    output: true
+    permalink: /hobbies/:slug/
+  biblioteca:
+    output: true
+    permalink: /biblioteca/:slug/
+  proyectos:
+    output: true
+    permalink: /proyectos/:slug/
+  bitacora:
+    output: true
+    permalink: /bitacora/:slug/
+
+# ----------------------------------------------------------------------------
+# Defaults (Front Matter por defecto)
+# ----------------------------------------------------------------------------
+defaults:
+  # Humanidades
+  - scope:
+      path: ""
+      type: "humanidades"
+    values:
+      layout: "post"
+      collection_name: "Humanidades"
+      collection_icon: "📚"
+      comments: true
+  
+  # Ciencias
+  - scope:
+      path: ""
+      type: "ciencias"
+    values:
+      layout: "post"
+      collection_name: "Ciencias"
+      collection_icon: "🔬"
+      math: true
+      comments: true
+  
+  # Tecnología
+  - scope:
+      path: ""
+      type: "tecnologia"
+    values:
+      layout: "post"
+      collection_name: "Tecnología"
+      collection_icon: "💻"
+      comments: true
+  
+  # Negocios
+  - scope:
+      path: ""
+      type: "negocios"
+    values:
+      layout: "post"
+      collection_name: "Negocios"
+      collection_icon: "📈"
+      comments: true
+  
+  # Salud
+  - scope:
+      path: ""
+      type: "salud"
+    values:
+      layout: "post"
+      collection_name: "Salud"
+      collection_icon: "🏃"
+      comments: true
+  
+  # Idiomas
+  - scope:
+      path: ""
+      type: "idiomas"
+    values:
+      layout: "post"
+      collection_name: "Idiomas"
+      collection_icon: "🌍"
+      comments: true
+  
+  # Hobbies
+  - scope:
+      path: ""
+      type: "hobbies"
+    values:
+      layout: "post"
+      collection_name: "Hobbies"
+      collection_icon: "♟️"
+      comments: true
+  
+  # Biblioteca (libros, películas, música)
+  - scope:
+      path: ""
+      type: "biblioteca"
+    values:
+      layout: "media"
+      collection_name: "Biblioteca"
+      collection_icon: "📖"
+      comments: true
+  
+  # Proyectos
+  - scope:
+      path: ""
+      type: "proyectos"
+    values:
+      layout: "post"
+      collection_name: "Proyectos"
+      collection_icon: "🚀"
+      comments: true
+  
+  # Bitácora
+  - scope:
+      path: ""
+      type: "bitacora"
+    values:
+      layout: "post"
+      collection_name: "Bitácora"
+      collection_icon: "📝"
+      comments: true
+  
+  # Páginas normales
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# ----------------------------------------------------------------------------
+# Plugins
+# ----------------------------------------------------------------------------
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# ----------------------------------------------------------------------------
+# SEO
+# ----------------------------------------------------------------------------
+twitter:
+  username: enmanuelcanelon
+  card: summary
+
+social:
+  name: Enmanuel Canelon
+  links:
+    - https://github.com/enmanuelcanelon
+
+# ----------------------------------------------------------------------------
+# Excluir del build
+# ----------------------------------------------------------------------------
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - LICENSE
+  - .gitignore
+  - "*.gemspec"
+
+# ----------------------------------------------------------------------------
+# Sass
+# ----------------------------------------------------------------------------
+sass:
+  style: compressed
+  sass_dir: _sass

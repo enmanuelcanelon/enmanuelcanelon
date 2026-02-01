@@ -1,0 +1,24 @@
+---
+# Punto de entrada para los estilos
+---
+
+// Variables y configuración
+@import "variables";
+
+// Modo oscuro (debe ir después de variables)
+@import "dark-mode";
+
+// Estilos base
+@import "base";
+
+// Layout
+@import "layout";
+
+// Componentes
+@import "components";
+
+// Resaltado de sintaxis
+@import "syntax";
+
+// Búsqueda
+@import "search";

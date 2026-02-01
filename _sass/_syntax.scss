@@ -1,0 +1,161 @@
+// ============================================================================
+// RESALTADO DE SINTAXIS - Jardín Digital
+// Basado en tema "One Dark" con soporte para modo claro/oscuro
+// ============================================================================
+
+// Modo claro
+:root {
+  --syntax-bg: #f6f8fa;
+  --syntax-text: #24292e;
+  --syntax-comment: #6a737d;
+  --syntax-keyword: #d73a49;
+  --syntax-string: #032f62;
+  --syntax-number: #005cc5;
+  --syntax-function: #6f42c1;
+  --syntax-variable: #e36209;
+  --syntax-class: #22863a;
+  --syntax-operator: #d73a49;
+  --syntax-punctuation: #24292e;
+}
+
+// Modo oscuro
+[data-theme="dark"] {
+  --syntax-bg: #1e1e32;
+  --syntax-text: #abb2bf;
+  --syntax-comment: #5c6370;
+  --syntax-keyword: #c678dd;
+  --syntax-string: #98c379;
+  --syntax-number: #d19a66;
+  --syntax-function: #61afef;
+  --syntax-variable: #e06c75;
+  --syntax-class: #e5c07b;
+  --syntax-operator: #56b6c2;
+  --syntax-punctuation: #abb2bf;
+}
+
+// Estilos del bloque de código
+.highlight {
+  background: var(--syntax-bg);
+  border-radius: var(--border-radius);
+  margin: var(--space-6) 0;
+  overflow-x: auto;
+  
+  pre {
+    margin: 0;
+    padding: var(--space-4);
+    background: transparent;
+  }
+  
+  code {
+    background: transparent;
+    color: var(--syntax-text);
+  }
+}
+
+// Números de línea
+.highlight .lineno {
+  color: var(--syntax-comment);
+  padding-right: var(--space-4);
+  border-right: 1px solid var(--color-border);
+  margin-right: var(--space-4);
+  user-select: none;
+}
+
+// Rouge syntax classes
+.highlight {
+  // Comentarios
+  .c, .c1, .cm, .cs, .cp, .ch, .cd {
+    color: var(--syntax-comment);
+    font-style: italic;
+  }
+  
+  // Keywords
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv {
+    color: var(--syntax-keyword);
+    font-weight: 500;
+  }
+  
+  // Strings
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss {
+    color: var(--syntax-string);
+  }
+  
+  // Numbers
+  .m, .mf, .mh, .mi, .mo, .mb, .mx, .il {
+    color: var(--syntax-number);
+  }
+  
+  // Functions
+  .nf, .fm, .nx {
+    color: var(--syntax-function);
+  }
+  
+  // Variables
+  .n, .na, .nb, .nc, .nd, .ne, .ni, .nl, .nn, .no, .nt, .nv {
+    color: var(--syntax-text);
+  }
+  
+  // Variables (especiales)
+  .vi, .vg, .vc {
+    color: var(--syntax-variable);
+  }
+  
+  // Classes/Types
+  .nc, .no {
+    color: var(--syntax-class);
+  }
+  
+  // Operators
+  .o, .ow {
+    color: var(--syntax-operator);
+  }
+  
+  // Punctuation
+  .p {
+    color: var(--syntax-punctuation);
+  }
+  
+  // Errors
+  .err {
+    color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+  }
+  
+  // Generic
+  .gd { // Diff deleted
+    color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+  }
+  
+  .gi { // Diff inserted
+    color: #4caf50;
+    background: rgba(76, 175, 80, 0.1);
+  }
+  
+  .gh, .gu { // Diff header
+    color: var(--syntax-keyword);
+    font-weight: 500;
+  }
+}
+
+// Etiqueta del lenguaje
+pre[class*="language-"]::before,
+.highlight[data-lang]::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0;
+  right: var(--space-4);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--syntax-comment);
+  text-transform: uppercase;
+}
+
+// Estilos para inline code
+:not(pre) > code {
+  background: var(--color-code-bg);
+  color: var(--color-code-text);
+  padding: 0.15em 0.4em;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9em;
+}

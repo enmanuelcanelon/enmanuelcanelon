@@ -1,0 +1,56 @@
+---
+layout: default
+title: "Página no encontrada"
+permalink: /404.html
+---
+
+<div class="error-page">
+  <span class="error-emoji">🌿</span>
+  <h1 class="error-code">404</h1>
+  <h2 class="error-title">Esta semilla aún no ha germinado</h2>
+  <p class="error-description">La página que buscas no existe o ha sido movida.</p>
+  <div class="error-actions">
+    <a href="{{ '/' | relative_url }}" class="btn btn-primary">Volver al inicio</a>
+    <button class="btn btn-outline" onclick="history.back()">Página anterior</button>
+  </div>
+</div>
+
+<style>
+.error-page {
+  text-align: center;
+  padding: var(--space-16) var(--space-4);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-emoji {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  line-height: 1;
+}
+
+.error-title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.error-description {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.error-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+</style>

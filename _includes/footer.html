@@ -1,0 +1,51 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <!-- Info del sitio -->
+      <div class="footer-section">
+        <h3 class="footer-title">🌱 {{ site.title }}</h3>
+        <p class="footer-description">{{ site.description }}</p>
+      </div>
+      
+      <!-- Colecciones -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Explorar</h4>
+        <ul class="footer-links">
+          <li><a href="{{ '/humanidades/' | relative_url }}">📚 Humanidades</a></li>
+          <li><a href="{{ '/ciencias/' | relative_url }}">🔬 Ciencias</a></li>
+          <li><a href="{{ '/tecnologia/' | relative_url }}">💻 Tecnología</a></li>
+          <li><a href="{{ '/negocios/' | relative_url }}">📈 Negocios</a></li>
+          <li><a href="{{ '/biblioteca/' | relative_url }}">📖 Biblioteca</a></li>
+        </ul>
+      </div>
+      
+      <!-- Más colecciones -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Más</h4>
+        <ul class="footer-links">
+          <li><a href="{{ '/salud/' | relative_url }}">🏃 Salud</a></li>
+          <li><a href="{{ '/idiomas/' | relative_url }}">🌍 Idiomas</a></li>
+          <li><a href="{{ '/hobbies/' | relative_url }}">♟️ Hobbies</a></li>
+          <li><a href="{{ '/proyectos/' | relative_url }}">🚀 Proyectos</a></li>
+          <li><a href="{{ '/bitacora/' | relative_url }}">📝 Bitácora</a></li>
+        </ul>
+      </div>
+      
+      <!-- Enlaces -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Enlaces</h4>
+        <ul class="footer-links">
+          <li><a href="{{ '/about/' | relative_url }}">Sobre mí</a></li>
+          <li><a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
+          <li><a href="https://github.com/EnmanuelCanelon" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author.name }}. Cultivando conocimiento.</p>
+      <p class="footer-tech">Hecho con Jekyll + GitHub Pages</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,75 @@
+<!-- JavaScript Principal -->
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+
+<!-- Toggle de Tema -->
+<script src="{{ '/assets/js/theme-toggle.js' | relative_url }}" defer></script>
+
+<!-- Búsqueda con Lunr.js -->
+<script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" defer></script>
+<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
+
+<!-- MathJax 3 (solo si la página lo requiere) -->
+{% if page.math %}
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
+
+<!-- Mermaid.js (solo si la página lo requiere) -->
+{% if page.mermaid %}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: theme === 'dark' ? 'dark' : 'default',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      }
+    });
+  });
+</script>
+{% endif %}
+
+<!-- Syntax Highlighting para código -->
+<script>
+  // Añadir botón de copiar a bloques de código
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('pre code').forEach(function(codeBlock) {
+      const pre = codeBlock.parentNode;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-wrapper';
+      
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'copy-btn';
+      copyBtn.textContent = 'Copiar';
+      copyBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(codeBlock.textContent).then(function() {
+          copyBtn.textContent = '¡Copiado!';
+          setTimeout(() => copyBtn.textContent = 'Copiar', 2000);
+        });
+      });
+      
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+      wrapper.appendChild(copyBtn);
+    });
+  });
+</script>

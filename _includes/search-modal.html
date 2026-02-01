@@ -1,0 +1,39 @@
+<!-- Modal de Búsqueda -->
+<div class="search-modal" id="search-modal" role="dialog" aria-modal="true" aria-label="Buscar">
+  <div class="search-modal-overlay" id="search-overlay"></div>
+  
+  <div class="search-modal-content">
+    <div class="search-input-wrapper">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input 
+        type="text" 
+        class="search-input" 
+        id="search-input" 
+        placeholder="Buscar en el jardín..." 
+        autocomplete="off"
+        autofocus
+      >
+      <kbd class="search-esc">ESC</kbd>
+    </div>
+    
+    <div class="search-results" id="search-results">
+      <div class="search-placeholder">
+        <p>Escribe para buscar notas, artículos y reseñas...</p>
+        <div class="search-tips">
+          <span class="tip">💡 Puedes buscar por título, contenido o tags</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="search-footer">
+      <span class="search-hint">
+        <kbd>↑</kbd><kbd>↓</kbd> navegar
+        <kbd>Enter</kbd> abrir
+        <kbd>ESC</kbd> cerrar
+      </span>
+    </div>
+  </div>
+</div>

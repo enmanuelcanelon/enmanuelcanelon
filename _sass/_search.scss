@@ -1,0 +1,169 @@
+// ============================================================================
+// BÚSQUEDA - Jardín Digital
+// ============================================================================
+
+// Modal de búsqueda
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-modal);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-16) var(--space-4);
+  
+  &.active {
+    display: flex;
+  }
+}
+
+.search-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.search-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: 70vh;
+  background: var(--color-bg-secondary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  
+  .search-icon {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+  
+  .search-input {
+    flex: 1;
+    border: none;
+    background: none;
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+    
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
+  }
+  
+  .search-esc {
+    flex-shrink: 0;
+  }
+}
+
+.search-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2);
+}
+
+.search-placeholder {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  color: var(--color-text-muted);
+  
+  .search-tips {
+    margin-top: var(--space-4);
+    
+    .tip {
+      font-size: var(--font-size-sm);
+    }
+  }
+}
+
+.search-result-item {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+  
+  &:hover,
+  &.focused {
+    background: var(--color-bg-tertiary);
+    text-decoration: none;
+  }
+}
+
+.search-result-title {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.search-result-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.search-result-collection {
+  background: var(--color-bg-tertiary);
+  padding: 2px var(--space-2);
+  border-radius: var(--border-radius-sm);
+}
+
+.search-result-excerpt {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+  
+  mark {
+    background: rgba(67, 97, 238, 0.2);
+    color: var(--color-primary);
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+}
+
+.search-no-results {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--color-text-muted);
+}
+
+.search-footer {
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+}
+
+.search-hint {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  
+  kbd {
+    margin: 0 var(--space-1);
+  }
+}
