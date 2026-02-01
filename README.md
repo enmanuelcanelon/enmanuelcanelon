@@ -19,7 +19,7 @@ Un espacio personal para cultivar y organizar conocimiento en multiples areas de
 
 ## Desarrollo Local
 
-`ash
+`bash
 bundle install
 bundle exec jekyll serve --livereload
 `
