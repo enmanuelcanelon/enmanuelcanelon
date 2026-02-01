@@ -9,8 +9,9 @@ backend:
   name: github
   repo: enmanuelcanelon/enmanuelcanelon
   branch: main
-  base_url: https://enmanuelcanelon.pages.dev
-  auth_endpoint: /auth
+  # Usar servicio OAuth externo (funciona con cualquier hosting)
+  base_url: https://sveltia-cms-auth.netlify.app
+  auth_endpoint: /api/oauth
 
 # Carpeta donde se guardan las imágenes subidas
 media_folder: "assets/uploads"
