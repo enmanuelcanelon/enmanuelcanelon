@@ -1,103 +1,31 @@
-<!-- Sistema de Comentarios Anónimos -->
+<!-- Sistema de Comentarios con Cusdis -->
 <section class="comments-section" id="comments">
-  <h3 class="comments-title">💬 Comentarios</h3>
+  <h3 class="comments-title">Comentarios</h3>
   
-  <!-- Formulario de nuevo comentario -->
-  <form class="comment-form" id="comment-form">
-    <div class="form-group">
-      <label for="comment-name">Nombre (opcional)</label>
-      <input 
-        type="text" 
-        id="comment-name" 
-        name="name" 
-        placeholder="Anónimo"
-        maxlength="50"
-      >
-    </div>
-    
-    <div class="form-group">
-      <label for="comment-text">Comentario *</label>
-      <textarea 
-        id="comment-text" 
-        name="comment" 
-        placeholder="Escribe tu comentario..."
-        rows="4"
-        required
-        maxlength="1000"
-      ></textarea>
-      <span class="char-count"><span id="char-count">0</span>/1000</span>
-    </div>
-    
-    <button type="submit" class="btn btn-primary">
-      Enviar comentario
-    </button>
-    
-    <p class="form-note">
-      Los comentarios son moderados. Sé respetuoso.
-    </p>
-  </form>
-  
-  <!-- Lista de comentarios -->
-  <div class="comments-list" id="comments-list">
-    <!-- Los comentarios se cargarían aquí -->
-    <div class="no-comments">
-      <p>Sé el primero en comentar.</p>
-    </div>
-  </div>
+  <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="a0c6186b-117a-4ef8-be3a-59dd6224cb7b"
+    data-page-id="{{ page.url }}"
+    data-page-url="{{ page.url | absolute_url }}"
+    data-page-title="{{ page.title }}"
+  ></div>
+  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('comment-form');
-  const textarea = document.getElementById('comment-text');
-  const charCount = document.getElementById('char-count');
-  
-  // Contador de caracteres
-  textarea.addEventListener('input', function() {
-    charCount.textContent = this.value.length;
-  });
-  
-  // Manejar envío del formulario
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('comment-name').value.trim() || 'Anónimo';
-    const comment = textarea.value.trim();
-    
-    if (!comment) return;
-    
-    // Aquí se integraría con un backend (Staticman, Formspree, etc.)
-    // Por ahora mostramos un mensaje
-    const commentsList = document.getElementById('comments-list');
-    const noComments = commentsList.querySelector('.no-comments');
-    if (noComments) noComments.remove();
-    
-    const newComment = document.createElement('div');
-    newComment.className = 'comment';
-    newComment.innerHTML = `
-      <div class="comment-header">
-        <span class="comment-author">${escapeHtml(name)}</span>
-        <time class="comment-date">${new Date().toLocaleDateString('es-ES')}</time>
-      </div>
-      <div class="comment-body">
-        <p>${escapeHtml(comment)}</p>
-      </div>
-    `;
-    
-    commentsList.insertBefore(newComment, commentsList.firstChild);
-    
-    // Limpiar formulario
-    form.reset();
-    charCount.textContent = '0';
-    
-    // Mostrar confirmación
-    alert('¡Gracias por tu comentario! (Nota: En un sitio estático real, esto requeriría un servicio backend como Staticman)');
-  });
-  
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-});
-</script>
+<style>
+.comments-section {
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.comments-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-6);
+}
+
+/* Estilos para Cusdis en modo oscuro */
+[data-theme="dark"] #cusdis_thread iframe {
+  color-scheme: dark;
+}
+</style>
