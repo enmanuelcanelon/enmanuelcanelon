@@ -1,0 +1,271 @@
+# ============================================================================
+# DECAP CMS - Configuración del Panel de Administración
+# ============================================================================
+# Accede a: https://enmanuelcanelon.pages.dev/admin
+# Login con tu cuenta de GitHub
+# ============================================================================
+
+backend:
+  name: github
+  repo: enmanuelcanelon/enmanuelcanelon
+  branch: main
+  base_url: https://enmanuelcanelon.pages.dev
+  auth_endpoint: /auth
+
+# Carpeta donde se guardan las imágenes subidas
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# Idioma
+locale: "es"
+
+# Slug (URLs amigables)
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# ============================================================================
+# COLECCIONES
+# ============================================================================
+
+collections:
+  # --------------------------------------------------------------------------
+  # HUMANIDADES
+  # --------------------------------------------------------------------------
+  - name: "humanidades"
+    label: "Humanidades"
+    label_singular: "Nota de Humanidades"
+    folder: "_humanidades"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["filosofía", "historia", "psicología", "política", "religión", "arte", "cine"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Usar LaTeX", name: "math", widget: "boolean", default: false }
+      - { label: "Usar Diagramas", name: "mermaid", widget: "boolean", default: false }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # CIENCIAS
+  # --------------------------------------------------------------------------
+  - name: "ciencias"
+    label: "Ciencias"
+    label_singular: "Nota de Ciencias"
+    folder: "_ciencias"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["matemáticas", "física", "química", "biología", "astronomía"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Usar LaTeX", name: "math", widget: "boolean", default: true }
+      - { label: "Usar Diagramas", name: "mermaid", widget: "boolean", default: false }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # TECNOLOGÍA
+  # --------------------------------------------------------------------------
+  - name: "tecnologia"
+    label: "Tecnología"
+    label_singular: "Nota de Tecnología"
+    folder: "_tecnologia"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["programación", "inteligencia-artificial", "ciberseguridad", "redes", "devops", "data-science", "web", "móvil"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Usar LaTeX", name: "math", widget: "boolean", default: false }
+      - { label: "Usar Diagramas", name: "mermaid", widget: "boolean", default: true }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # NEGOCIOS
+  # --------------------------------------------------------------------------
+  - name: "negocios"
+    label: "Negocios"
+    label_singular: "Nota de Negocios"
+    folder: "_negocios"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["finanzas", "economía", "marketing", "emprendimiento", "inversiones", "gestión"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Usar LaTeX", name: "math", widget: "boolean", default: true }
+      - { label: "Usar Diagramas", name: "mermaid", widget: "boolean", default: false }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # SALUD
+  # --------------------------------------------------------------------------
+  - name: "salud"
+    label: "Salud"
+    label_singular: "Nota de Salud"
+    folder: "_salud"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["nutrición", "fitness", "bienestar-mental", "productividad", "hábitos"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Usar LaTeX", name: "math", widget: "boolean", default: false }
+      - { label: "Usar Diagramas", name: "mermaid", widget: "boolean", default: false }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # IDIOMAS
+  # --------------------------------------------------------------------------
+  - name: "idiomas"
+    label: "Idiomas"
+    label_singular: "Nota de Idiomas"
+    folder: "_idiomas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["inglés", "francés", "alemán", "italiano", "portugués", "japonés", "chino", "otro"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # HOBBIES
+  # --------------------------------------------------------------------------
+  - name: "hobbies"
+    label: "Hobbies"
+    label_singular: "Nota de Hobbies"
+    folder: "_hobbies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["ajedrez", "viajes", "cocina", "gaming", "música", "fotografía", "otro"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Usar Diagramas", name: "mermaid", widget: "boolean", default: false }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # BIBLIOTECA (Libros, Películas, Series, Música)
+  # --------------------------------------------------------------------------
+  - name: "biblioteca"
+    label: "Biblioteca"
+    label_singular: "Reseña"
+    folder: "_biblioteca"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha de Reseña", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Tipo", name: "type", widget: "select", 
+          options: 
+            - { label: "Libro", value: "libro" }
+            - { label: "Película", value: "pelicula" }
+            - { label: "Serie", value: "serie" }
+            - { label: "Música", value: "musica" }
+        }
+      - { label: "Autor/Director/Artista", name: "author", widget: "string", required: false }
+      - { label: "Portada", name: "cover", widget: "image", required: false, 
+          media_folder: "/assets/covers", public_folder: "/assets/covers" }
+      - { label: "Calificación (1-5)", name: "rating", widget: "number", min: 1, max: 5, required: false }
+      - { label: "Estado", name: "status", widget: "select", 
+          options: 
+            - { label: "Leído/Visto/Escuchado", value: "leido" }
+            - { label: "En progreso", value: "leyendo" }
+            - { label: "Pendiente", value: "pendiente" }
+        }
+      - { label: "Año de Publicación", name: "year_published", widget: "number", required: false }
+      - { label: "Géneros", name: "genre", widget: "list", allow_add: true, required: false }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Fecha Terminado", name: "date_finished", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Reseña", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # PROYECTOS
+  # --------------------------------------------------------------------------
+  - name: "proyectos"
+    label: "Proyectos"
+    label_singular: "Proyecto"
+    folder: "_proyectos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["web", "móvil", "herramienta", "juego", "experimento", "tutorial", "otro"] }
+      - { label: "Estado", name: "status", widget: "select", 
+          options: ["en-progreso", "completado", "pausado", "abandonado"] }
+      - { label: "Enlace GitHub", name: "github", widget: "string", required: false }
+      - { label: "Enlace Demo", name: "demo", widget: "string", required: false }
+      - { label: "Imagen", name: "image", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Descripción", name: "description", widget: "text", required: false }
+      - { label: "Usar Diagramas", name: "mermaid", widget: "boolean", default: true }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: true }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # BITÁCORA
+  # --------------------------------------------------------------------------
+  - name: "bitacora"
+    label: "Bitácora"
+    label_singular: "Entrada de Bitácora"
+    folder: "_bitacora"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Categoría", name: "category", widget: "select", 
+          options: ["reflexión", "progreso", "meta", "aprendizaje", "personal"] }
+      - { label: "Tags", name: "tags", widget: "list", allow_add: true }
+      - { label: "Estado de ánimo", name: "mood", widget: "select", required: false,
+          options: ["motivado", "neutral", "cansado", "frustrado", "emocionado", "pensativo"] }
+      - { label: "Comentarios", name: "comments", widget: "boolean", default: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # --------------------------------------------------------------------------
+  # PÁGINAS ESTÁTICAS
+  # --------------------------------------------------------------------------
+  - name: "pages"
+    label: "Páginas"
+    files:
+      - label: "Sobre Mí"
+        name: "about"
+        file: "about.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descripción", name: "description", widget: "text", required: false }
+          - { label: "Contenido", name: "body", widget: "markdown" }

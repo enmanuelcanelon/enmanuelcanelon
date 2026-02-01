@@ -2,14 +2,46 @@
 <section class="comments-section" id="comments">
   <h3 class="comments-title">Comentarios</h3>
   
-  <div id="cusdis_thread"
-    data-host="https://cusdis.com"
-    data-app-id="a0c6186b-117a-4ef8-be3a-59dd6224cb7b"
-    data-page-id="{{ page.url }}"
-    data-page-url="{{ page.url | absolute_url }}"
-    data-page-title="{{ page.title }}"
-  ></div>
+  <div class="cusdis-wrapper">
+    <div id="cusdis_thread"
+      data-host="https://cusdis.com"
+      data-app-id="a0c6186b-117a-4ef8-be3a-59dd6224cb7b"
+      data-page-id="{{ page.url }}"
+      data-page-url="{{ page.url | absolute_url }}"
+      data-page-title="{{ page.title }}"
+      data-theme="{{ 'dark' }}"
+    ></div>
+  </div>
   <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+  
+  <script>
+    // Sincronizar tema de Cusdis con el tema del sitio
+    document.addEventListener('DOMContentLoaded', function() {
+      const updateCusdisTheme = () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const cusdisThread = document.getElementById('cusdis_thread');
+        if (cusdisThread) {
+          cusdisThread.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          // Recargar Cusdis si ya está cargado
+          if (window.CUSDIS) {
+            window.CUSDIS.setTheme(isDark ? 'dark' : 'light');
+          }
+        }
+      };
+      
+      // Observar cambios de tema
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'data-theme') {
+            updateCusdisTheme();
+          }
+        });
+      });
+      
+      observer.observe(document.documentElement, { attributes: true });
+      updateCusdisTheme();
+    });
+  </script>
 </section>
 
 <style>
@@ -24,7 +56,32 @@
   margin-bottom: var(--space-6);
 }
 
-/* Estilos para Cusdis en modo oscuro */
+/* Contenedor de Cusdis con mejor visualización */
+.cusdis-wrapper {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-4);
+  min-height: 300px;
+}
+
+/* Asegurar que el iframe de Cusdis se muestre correctamente */
+#cusdis_thread {
+  width: 100%;
+}
+
+#cusdis_thread iframe {
+  width: 100% !important;
+  min-height: 400px;
+  border: none !important;
+  background: transparent;
+}
+
+/* Modo oscuro */
+[data-theme="dark"] .cusdis-wrapper {
+  background: var(--color-bg-secondary);
+}
+
 [data-theme="dark"] #cusdis_thread iframe {
   color-scheme: dark;
 }

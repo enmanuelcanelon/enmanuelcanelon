@@ -1,0 +1,255 @@
+---
+layout: default
+---
+
+<section class="collection-page biblioteca-page">
+  <header class="collection-header">
+    <h1 class="collection-title">
+      <span class="collection-icon">{{ page.icon }}</span>
+      {{ page.title }}
+    </h1>
+    {% if page.description %}
+    <p class="collection-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+  
+  <!-- Filtros por tipo de media -->
+  {% assign items = site.biblioteca | sort: 'date' | reverse %}
+  
+  <div class="collection-filters">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="libro">Libros</button>
+    <button class="filter-btn" data-filter="pelicula">Películas</button>
+    <button class="filter-btn" data-filter="serie">Series</button>
+    <button class="filter-btn" data-filter="musica">Música</button>
+  </div>
+  
+  <!-- Grid de items -->
+  <div class="biblioteca-grid">
+    {% for item in items %}
+    <article class="media-card" data-type="{{ item.type }}">
+      <a href="{{ item.url | relative_url }}" class="media-card-link">
+        {% if item.cover %}
+        <div class="media-card-cover">
+          <img src="{{ item.cover | relative_url }}" alt="{{ item.title }}" loading="lazy">
+          {% if item.rating %}
+          <span class="media-card-rating">
+            {% for i in (1..item.rating) %}★{% endfor %}
+          </span>
+          {% endif %}
+        </div>
+        {% endif %}
+        
+        <div class="media-card-content">
+          <span class="media-card-type">
+            {% case item.type %}
+              {% when 'libro' %}📚 Libro
+              {% when 'pelicula' %}🎬 Película
+              {% when 'serie' %}📺 Serie
+              {% when 'musica' %}🎵 Música
+              {% else %}📖 Media
+            {% endcase %}
+          </span>
+          
+          <h2 class="media-card-title">{{ item.title }}</h2>
+          
+          {% if item.author %}
+          <p class="media-card-author">{{ item.author }}</p>
+          {% elsif item.director %}
+          <p class="media-card-author">{{ item.director }}</p>
+          {% elsif item.artist %}
+          <p class="media-card-author">{{ item.artist }}</p>
+          {% endif %}
+          
+          {% if item.status %}
+          <span class="media-card-status status-{{ item.status }}">
+            {% case item.status %}
+              {% when 'leido' %}Leído
+              {% when 'leyendo' %}Leyendo
+              {% when 'visto' %}Visto
+              {% when 'viendo' %}Viendo
+              {% when 'escuchado' %}Escuchado
+              {% when 'pendiente' %}Pendiente
+              {% else %}{{ item.status }}
+            {% endcase %}
+          </span>
+          {% endif %}
+          
+          {% if item.year_published %}
+          <span class="media-card-year">{{ item.year_published }}</span>
+          {% endif %}
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+  
+  {% if items.size == 0 %}
+  <div class="empty-state">
+    <p>Aún no hay contenido en la biblioteca.</p>
+    <p>¡Pronto habrá nuevas reseñas!</p>
+  </div>
+  {% endif %}
+</section>
+
+<style>
+.biblioteca-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(2, 1fr);
+  
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.media-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.media-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.media-card-cover {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  background: var(--color-bg-tertiary);
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+  }
+  
+  .media-card:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.media-card-rating {
+  position: absolute;
+  bottom: var(--space-2);
+  right: var(--space-2);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--color-star);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+}
+
+.media-card-content {
+  padding: var(--space-4);
+}
+
+.media-card-type {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.media-card-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+  line-height: 1.3;
+  
+  /* Limitar a 2 líneas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.media-card-author {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+  
+  /* Limitar a 1 línea */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-card-status {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  padding: 2px var(--space-2);
+  border-radius: var(--border-radius-sm);
+  margin-right: var(--space-2);
+  
+  &.status-leido,
+  &.status-visto,
+  &.status-escuchado {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--color-success);
+  }
+  
+  &.status-leyendo,
+  &.status-viendo {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--color-info);
+  }
+  
+  &.status-pendiente {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--color-warning);
+  }
+}
+
+.media-card-year {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+</style>
+
+<script>
+// Filtrado por tipo
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    
+    // Actualizar botón activo
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    // Filtrar cards
+    document.querySelectorAll('.media-card').forEach(card => {
+      if (filter === 'all' || card.dataset.type === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>

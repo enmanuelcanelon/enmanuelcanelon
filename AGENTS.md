@@ -70,23 +70,46 @@ mermaid: true   # Si usa diagramas
 
 **IMPORTANTE:** El campo `date` es OBLIGATORIO en TODAS las entradas. Sin el, la entrada no aparecera correctamente en "Ultimas notas" del inicio. Usar formato ISO: `YYYY-MM-DD` (ejemplo: `2026-01-31`).
 
-### Front Matter para Biblioteca (libros/peliculas/musica)
+### Front Matter para Biblioteca
+
+La biblioteca tiene **filtros por tipo de media**: Libros, Películas, Series, Música.
 
 ```yaml
 ---
-title: "Nombre del libro/pelicula/album"
+title: "Nombre del libro/pelicula/serie/album"
 date: YYYY-MM-DD              # Fecha de la resena (OBLIGATORIO)
-author: "Autor"               # O director/artista
-type: libro                   # libro | pelicula | musica
-status: leido                 # leido | leyendo | pendiente | visto | viendo | escuchado
+type: libro                   # libro | pelicula | serie | musica
+status: leido                 # Ver tabla de estados abajo
 rating: 5                     # 1-5 estrellas
-cover: /assets/covers/x.jpg   # Imagen de portada
+cover: /assets/covers/x.jpg   # Imagen de portada (aspect ratio 2:3)
 genre: [genero1, genero2]
 year_published: 1984
 date_finished: YYYY-MM-DD     # Cuando lo terminaste
 tags: [tag1, tag2]
+
+# Campos especificos por tipo:
+author: "Autor"               # Para libros
+director: "Director"          # Para peliculas/series
+artist: "Artista"             # Para musica
+seasons: 3                    # Para series (opcional)
 ---
 ```
+
+**Tipos disponibles:**
+| Tipo | Icono | Descripcion |
+|------|-------|-------------|
+| `libro` | 📚 | Libros, novelas, ensayos, comics |
+| `pelicula` | 🎬 | Peliculas, documentales |
+| `serie` | 📺 | Series de TV, anime |
+| `musica` | 🎵 | Albums, EPs, playlists |
+
+**Estados por tipo:**
+| Tipo | Estados validos |
+|------|-----------------|
+| libro | `leido`, `leyendo`, `pendiente` |
+| pelicula | `visto`, `pendiente` |
+| serie | `visto`, `viendo`, `pendiente` |
+| musica | `escuchado`, `pendiente` |
 
 ### Estructura Recomendada del Contenido
 
