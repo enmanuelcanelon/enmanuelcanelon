@@ -1,5 +1,6 @@
 ---
 title: "1984"
+date: 2026-01-15
 author: "George Orwell"
 type: libro
 status: leido

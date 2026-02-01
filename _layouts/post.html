@@ -2,48 +2,66 @@
 layout: default
 ---
 
-<article class="post" itemscope itemtype="http://schema.org/Article">
-  <!-- Header del Post -->
-  <header class="post-header">
-    <div class="post-meta">
-      <span class="post-collection">
-        {{ page.collection_icon }} {{ page.collection_name }}
-      </span>
-      {% if page.category %}
-      <span class="post-category">{{ page.category }}</span>
-      {% endif %}
-      {% if page.date %}
-      <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%d %b %Y" }}
-      </time>
+<article class="post-with-sidebar" itemscope itemtype="http://schema.org/Article">
+  <!-- Sidebar con Tabla de Contenido -->
+  <aside class="post-sidebar">
+    <div class="toc-container">
+      <h4 class="toc-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="15" y2="12"></line><line x1="3" y1="18" x2="9" y2="18"></line></svg>
+        Tabla de Contenido
+      </h4>
+      <nav class="toc" id="table-of-contents">
+        <!-- Se genera dinámicamente con JS -->
+      </nav>
+      
+      {% if page.tags.size > 0 %}
+      <div class="sidebar-tags">
+        <h4 class="sidebar-tags-title">Etiquetas</h4>
+        <div class="sidebar-tags-list">
+          {% for tag in page.tags %}
+          <span class="sidebar-tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
       {% endif %}
     </div>
+  </aside>
+
+  <!-- Contenido Principal -->
+  <div class="post-main">
+    <!-- Header del Post -->
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="post-collection">
+          {{ page.collection_icon }} {{ page.collection_name }}
+        </span>
+        {% if page.category %}
+        <span class="post-category">{{ page.category }}</span>
+        {% endif %}
+        {% if page.date %}
+        <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%d %b %Y" }}
+        </time>
+        {% endif %}
+      </div>
+      
+      <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+      
+      {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+      {% endif %}
+      
+      <!-- Tiempo de lectura estimado -->
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 %}
+      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+      <span class="reading-time">{{ minutes }} min de lectura</span>
+    </header>
     
-    <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
-    
-    {% if page.description %}
-    <p class="post-description">{{ page.description }}</p>
-    {% endif %}
-    
-    {% if page.tags.size > 0 %}
-    <div class="post-tags">
-      {% for tag in page.tags %}
-      <span class="tag">#{{ tag }}</span>
-      {% endfor %}
+    <!-- Contenido del Post -->
+    <div class="post-content" itemprop="articleBody">
+      {{ content }}
     </div>
-    {% endif %}
-    
-    <!-- Tiempo de lectura estimado -->
-    {% assign words = content | number_of_words %}
-    {% assign minutes = words | divided_by: 200 %}
-    {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-    <span class="reading-time">{{ minutes }} min de lectura</span>
-  </header>
-  
-  <!-- Contenido del Post -->
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
   
   <!-- Navegación entre posts de la misma colección -->
   <nav class="post-navigation">
@@ -77,8 +95,77 @@ layout: default
     {% endif %}
   </nav>
   
-  <!-- Sistema de Comentarios -->
-  {% if page.comments %}
-  {% include comments.html %}
-  {% endif %}
+    <!-- Sistema de Comentarios -->
+    {% if page.comments %}
+    {% include comments.html %}
+    {% endif %}
+  </div>
 </article>
+
+<script>
+// Generar Tabla de Contenido automáticamente
+document.addEventListener('DOMContentLoaded', function() {
+  const tocContainer = document.getElementById('table-of-contents');
+  const content = document.querySelector('.post-content');
+  const headings = content.querySelectorAll('h2, h3');
+  
+  if (headings.length === 0) {
+    tocContainer.innerHTML = '<p class="toc-empty">Sin secciones</p>';
+    return;
+  }
+  
+  const toc = document.createElement('ul');
+  toc.className = 'toc-list';
+  
+  headings.forEach((heading, index) => {
+    // Crear ID si no existe
+    if (!heading.id) {
+      heading.id = 'section-' + index;
+    }
+    
+    const li = document.createElement('li');
+    li.className = heading.tagName === 'H3' ? 'toc-item toc-item-sub' : 'toc-item';
+    
+    const a = document.createElement('a');
+    a.href = '#' + heading.id;
+    a.textContent = heading.textContent;
+    a.className = 'toc-link';
+    
+    // Scroll suave al hacer clic
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, null, '#' + heading.id);
+    });
+    
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  
+  tocContainer.appendChild(toc);
+  
+  // Resaltar sección activa mientras se hace scroll
+  const tocLinks = tocContainer.querySelectorAll('.toc-link');
+  
+  function highlightActiveSection() {
+    let currentSection = '';
+    
+    headings.forEach(heading => {
+      const rect = heading.getBoundingClientRect();
+      if (rect.top <= 120) {
+        currentSection = heading.id;
+      }
+    });
+    
+    tocLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + currentSection) {
+        link.classList.add('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', highlightActiveSection);
+  highlightActiveSection();
+});
+</script>

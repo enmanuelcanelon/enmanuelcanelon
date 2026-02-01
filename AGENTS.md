@@ -59,7 +59,7 @@ _bitacora/       -> Diario personal, reflexiones
 ```yaml
 ---
 title: "Titulo descriptivo y especifico"
-date: YYYY-MM-DD
+date: YYYY-MM-DD  # OBLIGATORIO - Fecha de publicacion (para ordenar cronologicamente)
 category: subcategoria_especifica
 tags: [tag1, tag2, tag3, tag4]
 description: "Descripcion de 1-2 lineas para SEO y previews"
@@ -68,11 +68,33 @@ mermaid: true   # Si usa diagramas
 ---
 ```
 
+**IMPORTANTE:** El campo `date` es OBLIGATORIO en TODAS las entradas. Sin el, la entrada no aparecera correctamente en "Ultimas notas" del inicio. Usar formato ISO: `YYYY-MM-DD` (ejemplo: `2026-01-31`).
+
+### Front Matter para Biblioteca (libros/peliculas/musica)
+
+```yaml
+---
+title: "Nombre del libro/pelicula/album"
+date: YYYY-MM-DD              # Fecha de la resena (OBLIGATORIO)
+author: "Autor"               # O director/artista
+type: libro                   # libro | pelicula | musica
+status: leido                 # leido | leyendo | pendiente | visto | viendo | escuchado
+rating: 5                     # 1-5 estrellas
+cover: /assets/covers/x.jpg   # Imagen de portada
+genre: [genero1, genero2]
+year_published: 1984
+date_finished: YYYY-MM-DD     # Cuando lo terminaste
+tags: [tag1, tag2]
+---
+```
+
 ### Estructura Recomendada del Contenido
 
 **PRINCIPIO FUNDAMENTAL: De lo simple a lo complejo**
 
 Cada entrada debe seguir una progresion pedagogica natural. El lector puede ser alguien que nunca ha escuchado del tema. Construir el conocimiento capa por capa.
+
+**NOTA SOBRE ENCABEZADOS:** Usar `## Titulo` (h2) para secciones principales y `### Subtitulo` (h3) para subsecciones. Esto genera automaticamente la **Tabla de Contenido** en el sidebar izquierdo que permite navegar rapidamente entre secciones.
 
 ```markdown
 ## Introduccion
