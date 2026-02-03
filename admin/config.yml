@@ -2,7 +2,8 @@ backend:
   name: github
   repo: enmanuelcanelon/enmanuelcanelon.github.io
   branch: main
-  base_url: https://decap-oauth.netlify.app
+  base_url: https://enmanuelcanelon.pages.dev
+  auth_endpoint: /api/auth
 
 media_folder: "assets/covers"
 public_folder: "/assets/covers"
