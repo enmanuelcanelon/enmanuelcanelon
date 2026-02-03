@@ -1,9 +1,8 @@
 backend:
   name: github
-  repo: enmanuelcanelon/enmanuelcanelon.github.io
+  repo: enmanuelcanelon/enmanuelcanelon
   branch: main
-  base_url: https://enmanuelcanelon.pages.dev
-  auth_endpoint: /api/auth
+  base_url: https://sveltia-cms-auth.netlify.app
 
 media_folder: "assets/covers"
 public_folder: "/assets/covers"
