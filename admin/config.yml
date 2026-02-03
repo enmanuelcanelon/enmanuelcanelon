@@ -1,0 +1,92 @@
+backend:
+  name: github
+  repo: enmanuelcanelon/enmanuelcanelon.github.io
+  branch: main
+  base_url: https://decap-oauth.netlify.app
+
+media_folder: "assets/covers"
+public_folder: "/assets/covers"
+
+locale: "es"
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "biblioteca"
+    label: "📚 Biblioteca"
+    folder: "_biblioteca"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - {
+          label: "Fecha de Añadido",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+        }
+      - { label: "Autor", name: "author", widget: "string", required: false }
+      - {
+          label: "Director",
+          name: "director",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Artista", name: "artist", widget: "string", required: false }
+      - label: "Tipo"
+        name: "type"
+        widget: "select"
+        options:
+          - { label: "📚 Libro", value: "libro" }
+          - { label: "🎬 Película", value: "pelicula" }
+          - { label: "📺 Serie", value: "serie" }
+          - { label: "🎵 Música", value: "musica" }
+      - label: "Estado"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "📋 Pendiente", value: "pendiente" }
+          - { label: "📖 Leyendo", value: "leyendo" }
+          - { label: "✅ Leído", value: "leido" }
+          - { label: "👀 Viendo", value: "viendo" }
+          - { label: "✅ Visto", value: "visto" }
+          - { label: "🎧 Escuchado", value: "escuchado" }
+      - {
+          label: "Portada",
+          name: "cover",
+          widget: "image",
+          required: false,
+          choose_url: false,
+        }
+      - {
+          label: "Calificación (1-5)",
+          name: "rating",
+          widget: "number",
+          min: 1,
+          max: 5,
+          required: false,
+        }
+      - {
+          label: "Año de Publicación",
+          name: "year_published",
+          widget: "number",
+          required: false,
+        }
+      - {
+          label: "Fecha de Terminado",
+          name: "date_finished",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          required: false,
+        }
+      - { label: "Géneros", name: "genre", widget: "list", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - {
+          label: "Contenido/Reseña",
+          name: "body",
+          widget: "markdown",
+          required: false,
+        }
