@@ -1,8 +1,6 @@
 backend:
-  name: github
-  repo: enmanuelcanelon/enmanuelcanelon
+  name: git-gateway
   branch: main
-  base_url: https://enmanuelcanelon.netlify.app
 
 media_folder: "assets/covers"
 public_folder: "/assets/covers"
