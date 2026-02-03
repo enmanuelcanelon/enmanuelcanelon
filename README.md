@@ -33,4 +33,4 @@ bundle exec jekyll serve --livereload
 
 ## Licencia
 
-MIT
+MIT.
