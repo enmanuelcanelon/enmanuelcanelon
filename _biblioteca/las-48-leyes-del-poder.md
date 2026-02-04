@@ -5,7 +5,7 @@ author: " Robert Greene"
 type: libro
 status: pendiente
 cover: /assets/covers/48leyes.webp
-rating: 1
+rating: ""
 genre:
   - autoayuda
 tags:
