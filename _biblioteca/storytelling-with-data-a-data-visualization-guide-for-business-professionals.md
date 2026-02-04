@@ -4,7 +4,7 @@ date: 2026-02-04
 author: " Cole Nussbaumer Knaflic"
 type: libro
 status: pendiente
-cover: /assets/covers/image-1-.png
+cover: ""
 genre:
   - negocios-análisis de datos-comunicación profesional
 tags:
