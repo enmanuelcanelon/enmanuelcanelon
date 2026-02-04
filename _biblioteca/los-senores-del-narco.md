@@ -4,7 +4,7 @@ date: 2026-02-04
 author: " Anabel Hernández García"
 type: libro
 status: pendiente
-cover: /assets/covers/images.jpg
+cover: ""
 genre:
   - periodismo
 tags:
