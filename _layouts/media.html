@@ -39,10 +39,11 @@ layout: default
         
         <!-- Rating con estrellas -->
         {% if page.rating %}
+        {% assign rating_num = page.rating | plus: 0 %}
         <div class="media-rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
           <span class="stars">
             {% for i in (1..5) %}
-              {% if i <= page.rating %}★{% else %}☆{% endif %}
+              {% if i <= rating_num %}★{% else %}☆{% endif %}
             {% endfor %}
           </span>
           <span class="rating-value" itemprop="ratingValue">{{ page.rating }}/5</span>
