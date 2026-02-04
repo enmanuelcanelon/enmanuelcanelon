@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Richard A. Easterlin"
 type: libro
 status: pendiente
-cover: /assets/covers/books/AN-ECONOMISTS-LESSONS-ON-HAPPINESS_RICHARD_A_EASTERLIN.png
+cover: /assets/covers/AN-ECONOMISTS-LESSONS-ON-HAPPINESS_RICHARD_A_EASTERLIN.png
 genre: [economía, psicología, bienestar]
 tags: [felicidad, paradoja de Easterlin, bienestar]
 ---

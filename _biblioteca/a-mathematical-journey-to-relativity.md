@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Wladimir Georges Boskoff & Salvatore Capozziello"
 type: libro
 status: pendiente
-cover: /assets/covers/books/A-MATHEMATICAL-JOURNEY-TO-RELATIVITY_WLADIMIR-GEORGES_BOSKOFF_&_SALVATORE_CAPOZZIELLO.png
+cover: /assets/covers/A-MATHEMATICAL-JOURNEY-TO-RELATIVITY_WLADIMIR-GEORGES_BOSKOFF_&_SALVATORE_CAPOZZIELLO.png
 genre: [matemáticas, física, relatividad]
 tags: [ciencia, relatividad, matemáticas avanzadas]
 ---

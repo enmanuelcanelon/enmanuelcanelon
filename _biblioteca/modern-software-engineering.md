@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "David Farley"
 type: libro
 status: pendiente
-cover: /assets/covers/books/MODERN-SOFTWARE-ENGINEERING_DAVID_FARLEY.png
+cover: /assets/covers/MODERN-SOFTWARE-ENGINEERING_DAVID_FARLEY.png
 genre: [ingeniería de software, DevOps, agilidad]
 tags: [continuous delivery, testing, ingeniería]
 ---

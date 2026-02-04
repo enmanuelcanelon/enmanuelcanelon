@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Dietrich Vollrath"
 type: libro
 status: pendiente
-cover: /assets/covers/books/FULLY-GROWN_DIETRICH_VOLLRATH.png
+cover: /assets/covers/FULLY-GROWN_DIETRICH_VOLLRATH.png
 genre: [economía, crecimiento, desarrollo]
 tags: [crecimiento económico, productividad, estancamiento]
 ---

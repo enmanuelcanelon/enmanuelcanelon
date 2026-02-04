@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Cay S. Horstmann"
 type: libro
 status: pendiente
-cover: /assets/covers/books/CORE-JAVA-VOLUME-I-FUNDAMENTALS_CAY_S_HORSTMANN.png
+cover: /assets/covers/CORE-JAVA-VOLUME-I-FUNDAMENTALS_CAY_S_HORSTMANN.png
 genre: [programación, Java, fundamentos]
 tags: [Java, OOP, desarrollo]
 ---

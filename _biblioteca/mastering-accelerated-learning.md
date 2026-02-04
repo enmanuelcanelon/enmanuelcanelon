@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Jordan Williams"
 type: libro
 status: pendiente
-cover: /assets/covers/books/MASTERING-ACCELERATED-LEARNING_JORDAN_WILLIAMS.png
+cover: /assets/covers/MASTERING-ACCELERATED-LEARNING_JORDAN_WILLIAMS.png
 genre: [productividad, aprendizaje, desarrollo personal]
 tags: [aprendizaje acelerado, memoria, técnicas de estudio]
 ---

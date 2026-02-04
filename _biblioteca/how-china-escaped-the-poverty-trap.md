@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Yuen Yuen Ang"
 type: libro
 status: pendiente
-cover: /assets/covers/books/HOW-CHINA-ESCAPED-THE-POVERTY-TRAP_YUEN_YUEN_ANG.png
+cover: /assets/covers/HOW-CHINA-ESCAPED-THE-POVERTY-TRAP_YUEN_YUEN_ANG.png
 genre: [economía, desarrollo, China]
 tags: [desarrollo económico, instituciones, pobreza]
 ---

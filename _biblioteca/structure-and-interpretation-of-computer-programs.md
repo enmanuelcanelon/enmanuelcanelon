@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Harold Abelson & Gerald Jay Sussman"
 type: libro
 status: pendiente
-cover: /assets/covers/books/STRUCTURE-AND-INTERPRETATION-OF-COMPUTER-PROGRAMS_HAROLD_ABELSON_&_GERALD_JAY_SUSSMAN.png
+cover: /assets/covers/STRUCTURE-AND-INTERPRETATION-OF-COMPUTER-PROGRAMS_HAROLD_ABELSON_&_GERALD_JAY_SUSSMAN.png
 genre: [informática, programación, fundamentos]
 tags: [SICP, Scheme, abstracción, MIT]
 ---

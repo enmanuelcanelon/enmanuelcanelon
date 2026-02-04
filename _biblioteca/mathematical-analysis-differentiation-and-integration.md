@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Aramanovich, Guter, Lyusternik, Raukhvarger, Skanavi & Yanpolskii"
 type: libro
 status: pendiente
-cover: /assets/covers/books/MATHEMATICAL-ANALYSIS-DIFFERENTIATION-AND-INTEGRATION_ARAMANOVICH_GUTER_LYUSTERNIK_RAUKHVARGER_SKANAVI_YANPOLSKII.png
+cover: /assets/covers/MATHEMATICAL-ANALYSIS-DIFFERENTIATION-AND-INTEGRATION_ARAMANOVICH_GUTER_LYUSTERNIK_RAUKHVARGER_SKANAVI_YANPOLSKII.png
 genre: [matemáticas, análisis, cálculo]
 tags: [cálculo, diferenciación, integración]
 ---

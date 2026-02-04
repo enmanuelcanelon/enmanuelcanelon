@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Yves Hilpisch"
 type: libro
 status: pendiente
-cover: /assets/covers/books/FINANCIAL-THEORY-WITH-PYTHON_YVES_HILPISCH.png
+cover: /assets/covers/FINANCIAL-THEORY-WITH-PYTHON_YVES_HILPISCH.png
 genre: [finanzas, Python, programación]
 tags: [finanzas cuantitativas, Python, trading]
 ---

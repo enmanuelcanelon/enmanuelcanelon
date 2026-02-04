@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Charu C. Aggarwal"
 type: libro
 status: pendiente
-cover: /assets/covers/books/PROBABILITY-AND-STATISTICS-FOR-MACHINE-LEARNING_CHARU_C_AGGARWAL.png
+cover: /assets/covers/PROBABILITY-AND-STATISTICS-FOR-MACHINE-LEARNING_CHARU_C_AGGARWAL.png
 genre: [estadística, machine learning, probabilidad]
 tags: [probabilidad, inferencia, ML fundamentos]
 ---

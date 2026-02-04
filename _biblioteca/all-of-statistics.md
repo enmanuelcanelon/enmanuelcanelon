@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Larry Wasserman"
 type: libro
 status: pendiente
-cover: /assets/covers/books/ALL-OF-STATISTICS_LARRY_WASSERMAN.png
+cover: /assets/covers/ALL-OF-STATISTICS_LARRY_WASSERMAN.png
 genre: [estadística, matemáticas, machine learning]
 tags: [estadística, probabilidad, inferencia]
 ---

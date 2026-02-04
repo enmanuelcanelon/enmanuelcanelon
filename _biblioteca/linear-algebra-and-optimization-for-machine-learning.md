@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Charu C. Aggarwal"
 type: libro
 status: pendiente
-cover: /assets/covers/books/LINEAR-ALGEBRA-AND-OPTIMIZATION-FOR-MACHINE-LEARNING_CHARU_C_AGGARWAL.png
+cover: /assets/covers/LINEAR-ALGEBRA-AND-OPTIMIZATION-FOR-MACHINE-LEARNING_CHARU_C_AGGARWAL.png
 genre: [matemáticas, machine learning, álgebra lineal]
 tags: [optimización, matrices, fundamentos ML]
 ---

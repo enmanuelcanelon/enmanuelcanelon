@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Vlad Mihalcea"
 type: libro
 status: pendiente
-cover: /assets/covers/books/HIGH-PERFORMANCE-JAVA-PERSISTENCE_VLAD_MIHALCEA.png
+cover: /assets/covers/HIGH-PERFORMANCE-JAVA-PERSISTENCE_VLAD_MIHALCEA.png
 genre: [Java, bases de datos, rendimiento]
 tags: [JPA, Hibernate, optimización, SQL]
 ---

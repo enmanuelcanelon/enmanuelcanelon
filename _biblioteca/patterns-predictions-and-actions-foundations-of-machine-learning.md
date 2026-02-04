@@ -4,7 +4,7 @@ date: 2026-02-04
 author: Benjamin Recht y Moritz Hardt
 type: libro
 status: pendiente
-cover: ""
+cover: /assets/covers/PATTERNS-PREDICTIONS-AND-ACTIONS_MORITZ_HARDT_&_BENJAMIN_RECHT.png
 genre:
   - Machine learning
 tags:

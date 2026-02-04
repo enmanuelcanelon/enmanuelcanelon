@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Robert J. Gordon"
 type: libro
 status: pendiente
-cover: /assets/covers/books/THE-RISE-AND-FALL-OF-AMERICAN-GROWTH_ROBERT_J_GORDON.png
+cover: /assets/covers/THE-RISE-AND-FALL-OF-AMERICAN-GROWTH_ROBERT_J_GORDON.png
 genre: [economía, historia, Estados Unidos]
 tags: [crecimiento económico, productividad, historia económica]
 ---

@@ -4,7 +4,7 @@ date: 2026-02-04
 author: "Gerhard Larcher"
 type: libro
 status: pendiente
-cover: /assets/covers/books/THE-ART-OF-QUANTITATIVE-FINANCE-VOL-2_GERHARD_LARCHER.png
+cover: /assets/covers/THE-ART-OF-QUANTITATIVE-FINANCE-VOL-2_GERHARD_LARCHER.png
 genre: [finanzas, matemáticas, trading]
 tags: [finanzas cuantitativas, tasas de interés, volatilidad]
 ---
